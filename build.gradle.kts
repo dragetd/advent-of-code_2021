@@ -1,33 +1,40 @@
+import org.jetbrains.compose.compose
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("multiplatform") version "1.5.10"
+    kotlin("jvm") version "1.5.31"
+    id("org.jetbrains.compose") version "1.0.0"
 }
 
 group = "net.speciesm.draget"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    google()
     mavenCentral()
 }
 
-kotlin {
-    var hostOs = System.getProperty("os.name")
-    if (hostOs.startsWith("Windows")) hostOs = "Windows"
-    val nativeTarget = when {
-        hostOs == "Mac OS X" -> macosX64("native")
-        hostOs == "Linux" -> linuxX64("native")
-        hostOs == "Windows" -> mingwX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+dependencies {
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
+    implementation(compose.desktop.currentOs)
+}
 
-    nativeTarget.apply {
-        binaries {
-            executable {
-                entryPoint = "main"
-            }
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks.withType<KotlinCompile>() {
+    kotlinOptions.jvmTarget = "16"
+}
+
+compose.desktop {
+    application {
+        mainClass = "AoC2021"
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = rootProject.name
+            packageVersion = "1.0.0"
         }
-    }
-    sourceSets {
-        val nativeMain by getting
-        val nativeTest by getting
     }
 }
