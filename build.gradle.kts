@@ -16,8 +16,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
     implementation(compose.desktop.currentOs)
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
+    testImplementation("org.assertj:assertj-core:3.21.0")
 }
 
 tasks.test {
