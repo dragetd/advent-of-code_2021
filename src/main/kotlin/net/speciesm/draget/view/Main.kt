@@ -70,7 +70,9 @@ fun solution(task: String, input: String): String {
         val solveFunction = Class.forName("net.speciesm.draget.solution.Day${day}Kt").methods.first { it.name == "solve$task" }
         return solveFunction.invoke(null, input.trim()).toString()
     } catch (ex: NoSuchElementException) {
-        return "This solution is not yet implemented."
+        return "This solution for this day is not yet implemented."
+    } catch (ex: ClassNotFoundException) {
+        return "This day is not yet implemented."
     } catch (ex: Exception) {
         return "Could not solve. ${ex.message}"
     }
