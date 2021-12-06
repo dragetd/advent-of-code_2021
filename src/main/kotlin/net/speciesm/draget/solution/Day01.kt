@@ -2,7 +2,6 @@ package net.speciesm.draget.solution
 
 fun solve1a(rawInput: String): String {
     val input = rawInput.lines().map { it.toInt() }
-    println(object{}.javaClass.name)
     return input.asSequence()
         .windowed(2)
         .count { (first, second) -> second > first }
