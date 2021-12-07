@@ -25,8 +25,8 @@ internal class Day03KtTest {
         assertThat(solve3a(fixture)).isEqualTo("198")
     }
 
-//    @Test
-//    fun solve3b() {
-//        assertThat(solve3b(fixture)).isEqualTo("x")
-//    }
+    @Test
+    fun solve3b() {
+        assertThat(solve3b(fixture)).isEqualTo("230")
+    }
 }
