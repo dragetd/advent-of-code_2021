@@ -25,6 +25,10 @@ Even if I want to learn myself, I still very much appreciate if you want to make
 
 ## Changelog
 
+### 2021-12-11
+* Fix application manifest (Now runs with `./gradew run`)
+
+
 ### 2021-12-07
 * Solve Day 3
 * Add a README
