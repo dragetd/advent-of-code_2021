@@ -6,6 +6,9 @@ plugins {
     // desktop compose 1.0.0 is not yet compatible with Kotlin 1.6
     kotlin("jvm") version "1.5.31"
     id("org.jetbrains.compose") version "1.0.0"
+    // Jacoco plugins, see https://docs.gradle.org/current/userguide/jacoco_plugin.html
+    jacoco
+    id("org.barfuin.gradle.jacocolog") version "2.0.0"
 }
 
 group = "net.speciesm.draget"
@@ -24,7 +27,8 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.21.0")
 }
 
-tasks.test {
+tasks.withType<Test>() {
+    finalizedBy(tasks.jacocoTestReport)
     useJUnitPlatform()
 }
 
