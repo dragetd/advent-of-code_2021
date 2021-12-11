@@ -3,6 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    // desktop compose 1.0.0 is not yet compatible with Kotlin 1.6
     kotlin("jvm") version "1.5.31"
     id("org.jetbrains.compose") version "1.0.0"
 }
@@ -17,9 +18,9 @@ repositories {
 
 dependencies {
     implementation(compose.desktop.currentOs)
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.assertj:assertj-core:3.21.0")
 }
 
@@ -27,8 +28,18 @@ tasks.test {
     useJUnitPlatform()
 }
 
+// Kotlin and Java need to compile to JVM 16, because compose is not yet compatible with 17
+tasks.withType<JavaCompile>() {
+    java {
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
+    }
+}
+
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "16"
+    kotlinOptions {
+        jvmTarget = "16"
+    }
 }
 
 compose.desktop {
