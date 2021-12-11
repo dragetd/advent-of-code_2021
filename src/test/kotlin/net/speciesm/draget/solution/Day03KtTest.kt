@@ -21,12 +21,12 @@ internal class Day03KtTest {
                 """.trimIndent()
 
     @Test
-    fun solve3a() {
+    fun firstTask() {
         assertThat(solve3a(fixture)).isEqualTo("198")
     }
 
     @Test
-    fun solve3b() {
+    fun secondTask() {
         assertThat(solve3b(fixture)).isEqualTo("230")
     }
 }
