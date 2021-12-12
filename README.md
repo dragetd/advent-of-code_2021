@@ -29,6 +29,7 @@ Even if I want to learn myself, I still very much appreciate if you want to make
 * Solve Day 5
 * Solve Day 6
 * Solve Day 7
+* Solve Day 8a
 
 ### 2021-12-11
 * Fix application manifest (Now runs with `./gradew run`)
