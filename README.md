@@ -25,6 +25,9 @@ Even if I want to learn myself, I still very much appreciate if you want to make
 
 ## Changelog
 
+### 2021-12-12
+* Solve Day 5
+
 ### 2021-12-11
 * Fix application manifest (Now runs with `./gradew run`)
 * Add CI with coverage display in MRs using Jacoco.
