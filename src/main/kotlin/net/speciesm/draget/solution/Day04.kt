@@ -4,7 +4,6 @@ data class BoardNumber(val number: Int, var marked: Boolean)
 typealias BoardRow = Array<BoardNumber>
 typealias Board = Array<BoardRow>
 
-
 private fun String.toBoard(): Board {
     return this.lines()
         .map { row ->
